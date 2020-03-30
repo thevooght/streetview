@@ -250,3 +250,9 @@ def download_flats(panoid, flat_dir, key, width=400, height=300,
                  fov=120, pitch=0, extension='jpg', year=2017):
     for heading in [0, 90, 180, 270]:
         api_download(panoid, heading, flat_dir, key, width, height, fov, pitch, extension, year)
+      
+def savePanorama(panoID, tile_dir, pano_dir):
+    tiles = tiles_info(panoID)
+    download_tiles(tiles,tile_dir)
+    stich_tiles(panoID, tiles, tile_dir, pano_dir)
+    delete_tiles(tiles, tile_dir)
